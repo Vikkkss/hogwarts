@@ -1,0 +1,14 @@
+SQL
+psql $DB_URL
+/d - список таблиц
+drop table tablename;
+create table факультет(факультет serial primary key, название text);
+insert into факультет(название) values ('Гриффиндор'), ('Слизерин'), ('Когтевран'), ('Пуффендуй');
+select * from факультет;
+create table роль(роль serial primary key, название text);
+insert into роль (название) values ('профессор'), (ученик');
+select * from роль;
+create table герой(герой serial primary key, фамилия text, имя text,
+с факультета int references факультет(факультет), выполняет_роль int references роль(роль),
+username text, password text);
+insert into герой (фамилия, имя, с_факультета, выполняет_роль,username, password) values
